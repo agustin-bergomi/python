@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+from openpyxl import Workbook
+import tkinter as tk
+
+
+master =tk.Tk()
+master.configure(width=600, height=300)
+
+options = [
+"Posicionamiento web",
+"Publicidad",
+"Pagina web"
+] #etc
+
+
+
+variable = tk.StringVar(master)
+variable.set(options[0]) # default value
+
+w = tk.OptionMenu(master, variable, *options)
+w.place(x=30, y=30)
+
+
+def boton_presionado():
+	if variable.get()=="Posicionamiento web":
+		print("Usted ha elegido: Posicionamiento web")
+	elif variable.get()=="Publicidad":
+		print("Usted ha elegido: Publicidad")
+	else:
+		print("Usted ha elegido: Pagina web")
+	sheet["A1"]=variable.get()+"Este servicio consiste en el posicionamiento de un perfil de red social o pagina web."
+	workbook.save(filename="Solicitud de servicios.xlsx")
+
+
+confirmar=tk.Button(text="Confirmar", command=boton_presionado)
+confirmar.place(x=30, y=60, width=300, height=30)
+
+def salir():
+	import sys; sys.exit()
+	
+btn=tk.Button(text="Salir", command=salir)
+btn.place(x=20, y=150, width=200, height=60)
+
+workbook = Workbook()
+sheet = workbook.active
+
+master.mainloop()
