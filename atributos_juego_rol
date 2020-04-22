@@ -1,0 +1,120 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+from openpyxl import Workbook
+import tkinter as tk
+import random
+
+	
+def boton_presionado():
+	inteligencia=random.randint(11,20)
+	agilidad=random.randint(11,20)
+	fuerza=random.randint(11,20)
+	carima=random.randint(11,20)
+	contitucion=random.randint(11,20)
+	
+	sheet["C2"]=str(inteligencia)
+	sheet["C3"]=str(agilidad)
+	sheet["C4"]=str(fuerza)
+	sheet["C5"]=str(carima)
+	sheet["C6"]=str(contitucion)
+	
+	etiqueta1.config(text=str(inteligencia))
+	etiqueta2.config(text=str(agilidad))
+	etiqueta3.config(text=str(fuerza))
+	etiqueta4.config(text=str(carima))
+	etiqueta5.config(text=str(contitucion))
+
+	print("Inteligencia: ",inteligencia)
+	print("Agilidad",agilidad)
+	print("Fuerza",fuerza)
+	print("Carisma",carima)
+	print("Constitucion",contitucion)
+	
+	workbook.save(filename="argentum_online.xlsx")
+
+def updateDisplay(myString):
+	displayVariable.set(myStr)
+	
+ventana=tk.Tk()
+ventana.config(width=400, height=600)
+ventana.title("Argentum online")
+
+boton=tk.Button(text="Imprimir valor", command=boton_presionado)
+boton.place(x=20, y=50, width=120, height=30)
+
+etiqueta0=tk.Label(ventana,)
+etiqueta0.place(x=200, y=100)
+etiqueta1=tk.Label(text="")
+etiqueta1.place(x=200, y=120)
+etiqueta2=tk.Label(text="")
+etiqueta2.place(x=200, y=150)
+etiqueta3=tk.Label(text="")
+etiqueta3.place(x=200, y=180)
+etiqueta4=tk.Label(text="")
+etiqueta4.place(x=200, y=210)
+etiqueta5=tk.Label(text="")
+etiqueta5.place(x=200, y=240)
+
+etiqueta6=tk.Label(text="Inteligencia")
+etiqueta6.place(x=30, y=120)
+etiqueta7=tk.Label(text="Agilidad")
+etiqueta7.place(x=30, y=150)
+etiqueta8=tk.Label(text="Fuerza")
+etiqueta8.place(x=30, y=180)
+etiqueta9=tk.Label(text="Carisma")
+etiqueta9.place(x=30, y=210)
+etiqueta10=tk.Label(text="Constitucion")
+etiqueta10.place(x=30, y=240)
+
+
+
+def salir():
+	import sys; sys.exit()
+
+lbl5=tk.Label(text="Presione salir cuando este conforme con los atributos")
+lbl5.place(x=20, y=300)
+
+btn=tk.Button(text="Salir", command=salir)
+btn.place(x=20, y=330, width=200, height=30)
+
+workbook = Workbook()
+sheet = workbook.active
+
+
+#titulos
+sheet["A1"] = "ATRIBUTOS"
+sheet["B1"] = ""
+sheet["C1"] = "VALORES"
+sheet["D1"] = ""
+sheet["E1"] = ""
+#columna A
+sheet["A2"] = "Fuerza"
+sheet["A3"] = "Agilidad"
+sheet["A4"] = "Inteligenica"
+sheet["A5"] = "Carisma"
+sheet["A6"] = "Constitucion"
+
+#columna B
+sheet["B2"] = ""
+sheet["B3"] = ""
+sheet["B4"] = ""
+sheet["B5"] = ""
+#col C
+sheet["C3"] = ""
+sheet["C4"] = ""
+sheet["C5"] = ""
+#col D Aumento en pesos
+sheet["D2"] = ""
+sheet["D3"] = ""
+sheet["D4"] = ""
+sheet["D5"] = ""
+#col E  Precio con aumento
+sheet["E2"] = ""
+sheet["E3"] = ""
+sheet["E4"] = ""
+sheet["E5"] = ""
+
+ventana.mainloop()
+
+
